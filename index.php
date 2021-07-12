@@ -1,4 +1,6 @@
 <?php
+session_start(); //to return the result of the deletion from delete.php
+
 require "dbconnection.php";
 $sql = "SELECT * FROM posts;";
 $op = mysqli_query($conn,$sql);
@@ -73,7 +75,13 @@ $op = mysqli_query($conn,$sql);
           <?php } ?>
          </tbody>
         </table>
-        
+        <?php 
+        if(isset($_SESSION['message'])){
+            echo $_SESSION['message'];
+
+        }unset($_SESSION['message']); //after I recieved the message ,I need to end the session directly
+
+       ?>
        
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
