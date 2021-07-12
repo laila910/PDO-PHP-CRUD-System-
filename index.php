@@ -66,8 +66,8 @@ $op = mysqli_query($conn,$sql);
              <td><?php echo $data['content'];?></td>
              <td><?php echo $data['image'];?></td>
              <td>
-                 <a class="btn btn-danger  m-r-1em  m-b-1em " href="#" role="button">Delete</a>
-                 <a class="btn btn-primary m-r-1em" href="#" role="button">Edit</a>
+                 <a class="btn btn-danger  m-r-1em  m-b-1em " href="delete.php?id=<?php echo $data['id']; ?>" role="button">Delete</a>
+                 <a class="btn btn-primary m-r-1em" href="edit.php?id=<?php echo $data['id']; ?>" role="button">Edit</a>
              </td>
          </tr>
           <?php } ?>
