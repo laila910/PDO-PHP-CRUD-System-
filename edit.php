@@ -1,6 +1,11 @@
  <?php 
-    require "dbconnection.php";
+
+  require "dbconnection.php";
   $errorMessages=array(); //associative array to carry the errors during check the validation 
+
+  $id =$_GET['id'];
+
+  
   
 function CleanInputs($input)
 { 
@@ -69,12 +74,13 @@ function CleanInputs($input)
      if(count($errorMessages) == 0){
        //form is valid then print the data 
         // echo 'your name is : '.$name.'<br> your email is :'.$email.'<br> your password is:'.$password.'<br> your LinkedIn Account is:'.$AccountOfLinkedIn.'<br>' .$fileIsUploadedToDesFolder.'<br> and your file path is :'.$nameOfTheFile;
-        $sql = "INSERT INTO posts(name,content,image) VALUES ('$name','$content','$nameOfTheImage');";
+        $sql = "UPDATE posts SET name='$name',content='$content',image='$nameOfTheImage' where id=".$id;
         $op = mysqli_query($conn,$sql);
         if($op){
-              echo'Data Inserted';
+              echo"the row is updated ";
+               header("Location: index.php");
         }else{
-            echo'ERROR In Insert the data ';
+            echo"Error in Update please Try again";
         }
      }else{
 
@@ -88,7 +94,10 @@ function CleanInputs($input)
     }
 }
         
-    
+ //select the row to edit 
+  $sql = "SELECT * FROM posts where id= $id";
+  $op = mysqli_query($conn,$sql);
+  $data = mysqli_fetch_assoc($op);   
                     
   ?>
  <!DOCTYPE html>
@@ -107,19 +116,19 @@ function CleanInputs($input)
 
          <div class="container">
              <h2> create post  </h2>
-             <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>"
+             <form method="post" action="edit.php?id=<?php echo $data['id'];?>"
                  enctype="multipart/form-data">
 
                  <div class="form-group">
                      <label for="exampleInputEmail1">Enter The Post Name</label>
-                     <input type="text" name="name" class="form-control" id="exampleInputName" aria-describedby=""
+                     <input type="text" name="name"  value="<?php echo $data['name']; ?>"class="form-control" id="exampleInputName" aria-describedby=""
                          placeholder="Enter The post name ">
                  </div>
 
 
                  <div class="form-group">
                      <label for="exampleInputEmail1">Enter your Content</label>
-                     <input type="text" name="content" class="form-control" id="exampleInputEmail1"
+                     <input type="text" name="content"  value="<?php echo $data['content']; ?>" class="form-control" id="exampleInputEmail1"
                          placeholder="Enter your content">
                  </div>
 
@@ -127,7 +136,7 @@ function CleanInputs($input)
                  
                  <div class="form-group">
                      <label for="exampleInputEmail1">Enter An Image of The Post</label>
-                     <input type="file" name="image" id=" exampleInputName" aria-describedby="">
+                     <input type="file" name="image"   value="<?php echo $data['image'];?> " id=" exampleInputName" aria-describedby="">
                  </div>
 
                  <button type="submit" class="btn btn-primary">create Post</button>
