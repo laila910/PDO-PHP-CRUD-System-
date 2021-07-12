@@ -70,7 +70,7 @@ function CleanInputs($input)
      if(count($errorMessages) == 0){
        //form is valid then print the data 
         // echo 'your name is : '.$name.'<br> your email is :'.$email.'<br> your password is:'.$password.'<br> your LinkedIn Account is:'.$AccountOfLinkedIn.'<br>' .$fileIsUploadedToDesFolder.'<br> and your file path is :'.$nameOfTheFile;
-        $sql = "INSERT INTO posts(name,content,image) VALUES ('$name','$content','$nameOfTheImage');";
+        $sql = "INSERT INTO posts(name,content,image) VALUES ('$name','$content','$FinalNameOfTheImage');";
         $op = mysqli_query($conn,$sql);
         if($op){
               echo'Data Inserted';
