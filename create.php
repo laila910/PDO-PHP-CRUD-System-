@@ -1,4 +1,5 @@
  <?php 
+ 
     require "dbconnection.php";
   $errorMessages=array(); //associative array to carry the errors during check the validation 
   
