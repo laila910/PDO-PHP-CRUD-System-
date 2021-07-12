@@ -40,7 +40,7 @@ $op = mysqli_query($conn,$sql);
         }
     </style>
     </head>
-    <body style="width:90%;margin-left:auto;margin-right:auto">
+    <body style="width:95%;margin-left:10px;margin-right:10px">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -52,6 +52,8 @@ $op = mysqli_query($conn,$sql);
                <th scope="col">Name</th>
                <th scope="col">Content</th>
                <th scope="col">Image</th>
+               <th scope="col">Action</th>
+
             </tr>
            </thead>
         <tbody>
@@ -63,6 +65,10 @@ $op = mysqli_query($conn,$sql);
              <td><?php echo $data['name'];?></td>
              <td><?php echo $data['content'];?></td>
              <td><?php echo $data['image'];?></td>
+             <td>
+                 <a class="btn btn-danger  m-r-1em  m-b-1em " href="#" role="button">Delete</a>
+                 <a class="btn btn-primary m-r-1em" href="#" role="button">Edit</a>
+             </td>
          </tr>
           <?php } ?>
          </tbody>
