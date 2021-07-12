@@ -1,6 +1,7 @@
 <?php
 require "dbconnection.php";
-
+$sql = "SELECT * FROM posts;";
+$op = mysqli_query($conn,$sql);
 
 
 
@@ -54,13 +55,16 @@ require "dbconnection.php";
             </tr>
            </thead>
         <tbody>
+            <?php
+              while($data = mysqli_fetch_assoc($op)){
+            ?>
          <tr>
-             <td>1</td>
-             <td>Mark</td>
-             <td>Otto</td>
-             <td>@mdo</td>
+             <td><?php echo $data['id'];?></td>
+             <td><?php echo $data['name'];?></td>
+             <td><?php echo $data['content'];?></td>
+             <td><?php echo $data['image'];?></td>
          </tr>
-    
+          <?php } ?>
          </tbody>
         </table>
         
