@@ -74,7 +74,7 @@ function CleanInputs($input)
      if(count($errorMessages) == 0){
        //form is valid then print the data 
         // echo 'your name is : '.$name.'<br> your email is :'.$email.'<br> your password is:'.$password.'<br> your LinkedIn Account is:'.$AccountOfLinkedIn.'<br>' .$fileIsUploadedToDesFolder.'<br> and your file path is :'.$nameOfTheFile;
-        $sql = "UPDATE posts SET name='$name',content='$content',image='$nameOfTheImage' where id=".$id;
+        $sql = "UPDATE posts SET name='$name',content='$content',image='$FinalNameOfTheImage' where id=".$id;
         $op = mysqli_query($conn,$sql);
         if($op){
               echo"the row is updated ";
